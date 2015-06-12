@@ -28,7 +28,7 @@ const (
 	itemSymbol
 
 	itemSubArticleNum //a)
-	itemsubArticleLet //1.-
+	itemSubArticleLet //1.-
 
 	itemContainer
 	itemBook
