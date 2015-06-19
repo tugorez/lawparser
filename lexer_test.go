@@ -17,6 +17,7 @@ var symbols = "@ * . - ¬ | ° ¨ ^ .-"
 var containers = "\nartículo 1.-\nCapítulo 10\n\nArtículo primero.-\nArtículo décimo.-\nSección 30 bis\n"
 var subarticlelet = "\na)\nb)\nc)"
 var subarticlenum = "\n1)\nprimero)\n1 bis)"
+var undefinedB = []byte{1, 2, 3, 4}
 
 func TestPeek(t *testing.T) {
 	textestB := []byte(textest)
@@ -189,5 +190,12 @@ func TestLexSubArticleNum(t *testing.T) {
 		if item.typ != itemSubArticleNum {
 			t.Error("Expected itemSubArticleNum got ", item)
 		}
+	}
+}
+
+func TestLexUndefined(t *testing.T) {
+	l := lex(undefinedB)
+	for item := l.nextItem(); item.typ != itemEOF; item = l.nextItem() {
+		t.Error("Expecting no items here, got ", item)
 	}
 }
