@@ -152,11 +152,12 @@ func lexNewLine(l *lexer) stateFn {
 	if typ, val, is := peekContainer(l); is {
 		l.emit(item{typ, val})
 		l.confirm()
-	} else if val, is := peekSubArticleLet(l); is {
-		l.emit(item{itemSubArticleLet, val})
-		l.confirm()
+		//muy importante, siempre tienes que escanear primero si es un numero (por los numeros romanos que tambien son letras)
 	} else if val, is := peekSubArticleNum(l); is {
 		l.emit(item{itemSubArticleNum, val})
+		l.confirm()
+	} else if val, is := peekSubArticleLet(l); is {
+		l.emit(item{itemSubArticleLet, val})
 		l.confirm()
 	} else {
 		l.emit(item{itemNewLine, ""})

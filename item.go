@@ -39,17 +39,32 @@ const (
 	itemFraction
 )
 
+var itemString = map[itemType]string{
+	itemError:         "error",
+	itemEOF:           "eof",
+	itemWord:          "word",
+	itemReserved:      "reserved",
+	itemRoman:         "roman",
+	itemOrdinal:       "ordinal",
+	itemLatin:         "latin",
+	itemNumber:        "number",
+	itemNewLine:       "newline",
+	itemSeparator:     "separator",
+	itemSymbol:        "symbol",
+	itemSubArticleNum: "subarticlenum",
+	itemSubArticleLet: "subarticlelet",
+	itemContainer:     "container",
+	itemBook:          "book",
+	itemTitle:         "title",
+	itemChapter:       "chapter",
+	itemSection:       "section",
+	itemArticle:       "article",
+	itemFraction:      "fraction",
+}
+
 func (self item) String() string {
-	switch {
-	case self.typ == itemError:
-		return self.val
-	case self.typ == itemEOF:
-		return "EOF"
-	case self.typ > itemWord:
-		return fmt.Sprintf("<%s>", self.val)
-	default:
-		return fmt.Sprintf("%s", self.val)
-	}
+	v, _ := itemString[self.typ]
+	return fmt.Sprintf("(%s,%s)", v, self.val)
 }
 
 //These are "all" posible ways to write  the diferent token containers
