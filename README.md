@@ -15,4 +15,8 @@ Las leyes y reglamentos tienen una estructura ( no es un estandar escrito para s
 Bajo las premisas antes citadas, se elabora la salida del documento legal (descrita en law.go)
 	
 La documentación del lexer (diagrama de estados) y el parser( cual es la estructura del documento de salida) se encuentran en la carpeta doc.
+#sobre los documentos
+Regularmente uso calibre (ebook-convert doc.pdf doc.txt) y para docs 
+#Uso
+en example hay un caso de uso 
 

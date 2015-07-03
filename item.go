@@ -70,30 +70,30 @@ func (self item) String() string {
 //These are "all" posible ways to write  the diferent token containers
 //This is a kind of mapping from diferent ways to write it to just one
 var Reserved = map[string]string{
-	"libro":  containerBook,
-	"libros": containerBook,
+	"libro": containerBook,
+	//"libros": containerBook,
 
-	"título":  containerTitle,
-	"titulo":  containerTitle,
-	"títulos": containerTitle,
-	"titulos": containerTitle,
+	"título": containerTitle,
+	"titulo": containerTitle,
+	//"títulos": containerTitle,
+	//"titulos": containerTitle,
 
-	"capítulo":  containerChapter,
-	"capitulo":  containerChapter,
-	"capitulos": containerChapter,
+	"capítulo": containerChapter,
+	"capitulo": containerChapter,
+	//"capitulos": containerChapter,
 
-	"sección":   containerSection,
-	"seccion":   containerSection,
-	"secciones": containerSection,
+	"sección": containerSection,
+	"seccion": containerSection,
+	//"secciones": containerSection,
 
-	"artículo":  containerArticle,
-	"articulo":  containerArticle,
-	"artículos": containerArticle,
-	"articulos": containerArticle,
+	"artículo": containerArticle,
+	"articulo": containerArticle,
+	//"artículos": containerArticle,
+	//"articulos": containerArticle,
 
-	"fracción":   containerFraction,
-	"fraccion":   containerFraction,
-	"fracciones": containerFraction,
+	//"fracción":   containerFraction,
+	//"fraccion":   containerFraction,
+	//"fracciones": containerFraction,
 }
 
 const (

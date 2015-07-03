@@ -2,6 +2,7 @@ package lawparser
 
 import (
 	"encoding/json"
+	"fmt"
 	"strings"
 )
 
@@ -70,7 +71,7 @@ func Parse(name, country, state, town, order, category, topic, url string, input
 	p.Header = parseHeader(p)
 	p.Articles = parseContainers(p)
 	p.Footer = parseFooter(p)
-	return p
+	return
 }
 
 /*parsers*/
@@ -230,7 +231,8 @@ func isFracSub(t, fracType item) bool {
 }
 
 func setParents(order item, title string, arts articles) {
-	o := Reserved[order.val]
+	o, _ := Reserved[order.val]
+	fmt.Println(order.val, o)
 	v := order.val
 	p := parent{Order: o, Num: v, Title: title}
 	for i := 0; i < len(arts); i++ {
