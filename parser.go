@@ -1,6 +1,7 @@
 package lawparser
 
 import (
+	"encoding/json"
 	"strings"
 )
 
@@ -12,6 +13,10 @@ type parser struct {
 	pos Pos
 }
 
+func (self parser) Json() []byte {
+	d, _ := json.Marshal(self)
+	return d
+}
 func (self *parser) peekItem() {
 	if int(self.pos)+1 >= len(self.items) {
 		it := self.lexer.nextItem()
@@ -46,7 +51,7 @@ func (self *parser) renderItem() string {
 	return strings.TrimSpace(str)
 }
 
-func Parse(name, country, state, town, order, category, topic, url string, input []byte) (p *parser) {
+func Parse(name, country, state, town, order, category, topic, url string, input []byte) (p *parser, err error) {
 	l := legalDocument{
 		Name:          name,
 		Country:       country,
