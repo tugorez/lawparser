@@ -2,7 +2,6 @@ package lawparser
 
 import (
 	"encoding/json"
-	"fmt"
 	"strings"
 )
 
@@ -232,7 +231,6 @@ func isFracSub(t, fracType item) bool {
 
 func setParents(order item, title string, arts articles) {
 	o, _ := Reserved[order.val]
-	fmt.Println(order.val, o)
 	v := order.val
 	p := parent{Order: o, Num: v, Title: title}
 	for i := 0; i < len(arts); i++ {

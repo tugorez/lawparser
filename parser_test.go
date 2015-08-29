@@ -98,7 +98,7 @@ func TestParseHeader(t *testing.T) {
 
 func TestParseArticles(t *testing.T) {
 	testContainersB := []byte(testContainers)
-	p := Parse("", "", "", "", "", "", "", "", testContainersB)
+	p, _ := Parse("", "", "", "", "", "", "", "", testContainersB)
 	if len(p.Articles) != 3 {
 		t.Error("It was expected 3 articles, found ", len(p.Articles))
 	}
@@ -106,7 +106,7 @@ func TestParseArticles(t *testing.T) {
 
 func TestParseFractions(t *testing.T) {
 	testContainersB := []byte(testContainers)
-	p := Parse("", "", "", "", "", "", "", "", testContainersB)
+	p, _ := Parse("", "", "", "", "", "", "", "", testContainersB)
 	if len(p.Articles[0].Fractions) != 1 {
 		t.Error("It was expected 1 fraction not ", len(p.Articles[0].Fractions))
 	}
@@ -120,7 +120,7 @@ func TestParseFractions(t *testing.T) {
 
 func TestArtSubFraction(t *testing.T) {
 	testContainersB := []byte(testContainers)
-	p := Parse("", "", "", "", "", "", "", "", testContainersB)
+	p, _ := Parse("", "", "", "", "", "", "", "", testContainersB)
 	if len(p.Articles[0].Fractions[0].Sub) != 2 {
 		t.Error("It was expected 2 subfractions not ", len(p.Articles[0].Fractions[0].Sub))
 	}
