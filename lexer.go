@@ -316,11 +316,10 @@ func peekSubArticleLet(l *lexer) (val string, is bool) {
 		is = false
 		return
 	}
-	s, is := peekSymbol(l)
+	_, is = peekSymbol(l)
 	if !is {
 		l.reset(backup)
 	}
-	val += s
 	return
 }
 func peekSubArticleNum(l *lexer) (val string, is bool) {
@@ -330,11 +329,10 @@ func peekSubArticleNum(l *lexer) (val string, is bool) {
 		l.reset(backup)
 		return
 	}
-	s, is := peekSymbol(l)
+	_, is = peekSymbol(l)
 	if !is {
 		l.reset(backup)
 	}
-	val += s
 	return
 }
 func peekUndefined(l *lexer) (val string, is bool) {

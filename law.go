@@ -13,6 +13,11 @@ type legalDocument struct {
 	Footer        string    `json:"footer"`
 	Articles      []article `json:"articles"`
 }
+
+func NewLegalDocument() *legalDocument {
+	return &legalDocument{}
+}
+
 type articles []article
 type article struct {
 	Id        string       `json:"id"`

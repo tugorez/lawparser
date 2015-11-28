@@ -95,7 +95,20 @@ func TestParseHeader(t *testing.T) {
 		t.Error("expected itemChapter with val 10, got ", p.item)
 	}
 }
-
+func TestParents(t *testing.T) {
+	testContainersB := []byte(testContainers)
+	p, _ := Parse("", "", "", "", "", "", "", "", testContainersB)
+	if len(p.Articles) != 3 {
+		t.Error("It was expected 3 articles, found ", len(p.Articles))
+	}
+	for _, a := range p.Articles {
+		for _, p := range a.Parents {
+			if len(p.Order) == 0 {
+				t.Error("Parent must have a valid value")
+			}
+		}
+	}
+}
 func TestParseArticles(t *testing.T) {
 	testContainersB := []byte(testContainers)
 	p, _ := Parse("", "", "", "", "", "", "", "", testContainersB)

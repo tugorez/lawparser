@@ -1,7 +1,9 @@
 package lawparser
 
 import (
+	"crypto/sha1"
 	"encoding/json"
+	"fmt"
 	"strings"
 )
 
@@ -15,6 +17,10 @@ type parser struct {
 
 func (self parser) Json() []byte {
 	d, _ := json.Marshal(self)
+	return d
+}
+func (self parser) JsonPretty() []byte {
+	d, _ := json.MarshalIndent(self, "", "    ")
 	return d
 }
 func (self *parser) peekItem() {
@@ -106,12 +112,15 @@ func parseContainer(p *parser) (arts articles) {
 	return
 }
 func parseArticle(p *parser) (art article) {
-	art.Id = p.item.val
+	art.Num = p.item.val
 	p.peekItem()
 	p.confirmItem()
 	art.Headers = parseArtHeaders(p)
 	art.Fractions = parseArtFractions(p)
 	art.Footers = parseArtFooters(p)
+	//the id modificalo
+	text := p.Name + p.Country + p.State + p.Town + p.Order + p.LegalCategory
+	art.Id = fmt.Sprintf("%x", sha1.Sum([]byte(text)))
 	return
 }
 func parseTitleContainer(p *parser) (title string) {
@@ -230,7 +239,7 @@ func isFracSub(t, fracType item) bool {
 }
 
 func setParents(order item, title string, arts articles) {
-	o, _ := Reserved[order.val]
+	o, _ := itemString[order.typ]
 	v := order.val
 	p := parent{Order: o, Num: v, Title: title}
 	for i := 0; i < len(arts); i++ {
