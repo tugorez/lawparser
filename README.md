@@ -3,14 +3,13 @@ lawparser se encarga de darle estructura a las leyes y reglamentos ( no sé si f
 
 Las leyes y reglamentos tienen una estructura ( no es un estandar escrito para ser seguido por imposición pero casi todos los documentos lo siguen (mas bien un estandar por convención)). La estructura es la siguiente:
 
-	*Todo documento legal puede tener libros
-	*Todo libro puede tener títulos
-	*Todo titulo puede tener capítulos
-	*Todo capítulo puede tener secciones
-	*Toda sección tiene artículos
-	*Todo artículo puede tener fracciones
-	*Toda fracción puede tener subfracciones
-(nada facil eh!)
+	Todo documento legal puede tener libros
+	Todo libro puede tener títulos
+	Todo titulo puede tener capítulos
+	Todo capítulo puede tener secciones
+	Toda sección tiene artículos
+	Todo artículo puede tener fracciones
+	Toda fracción puede tener subfracciones
 	
 Bajo las premisas antes citadas, se elabora la salida del documento legal (descrita en law.go)
 	
